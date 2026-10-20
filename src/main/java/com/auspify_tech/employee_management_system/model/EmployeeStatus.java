@@ -2,6 +2,6 @@ package com.auspify_tech.employee_management_system.model;
 
 public enum EmployeeStatus {
     ACTIVE,
-    INACTIVE,
+    TERMINATED,
     ON_LEAVE
 }
