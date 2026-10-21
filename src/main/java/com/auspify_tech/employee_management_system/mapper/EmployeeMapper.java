@@ -12,9 +12,9 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface EmployeeMapper {
 
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
+    // DÜZƏLİŞ: id/createdAt/updatedAt artıq ignore edilmir, departmentId/departmentCode isə department-dən götürülür
+    @Mapping(target = "departmentId", source = "department.id")
+    @Mapping(target = "departmentCode", source = "department.code")
     EmployeeResponseDto mapEntityToResponse(EmployeeEntity employee);
 
     @Mapping(target = "id", ignore = true)
