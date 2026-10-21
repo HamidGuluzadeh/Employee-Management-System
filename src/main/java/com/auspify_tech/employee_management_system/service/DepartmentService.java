@@ -5,7 +5,8 @@ import com.auspify_tech.employee_management_system.dto.response.DepartmentRespon
 
 import java.util.List;
 
-public interface DepartmentService {
+public interface
+DepartmentService {
 
     List<DepartmentResponseDto> getAllDepartments();
 

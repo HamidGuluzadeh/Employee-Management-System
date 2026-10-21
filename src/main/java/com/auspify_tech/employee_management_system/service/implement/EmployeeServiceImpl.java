@@ -34,12 +34,29 @@ public class EmployeeServiceImpl implements EmployeeService {
     EmployeeMapper employeeMapper;
 
     @Override
-    public Page<EmployeeResponseDto> getEmployeesByDepartment(String departmentId, int page, int size) {
+    public Page<EmployeeResponseDto> getEmployeesByDepartmentId(String departmentId, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
 
-        Page<EmployeeEntity> employeeEntities =  employeeRepository.findAllByDepartmentId(departmentId, pageable);
+        Page<EmployeeEntity> employeeEntities = employeeRepository.findAllByDepartmentId(departmentId, pageable);
 
         return employeeEntities.map(employeeMapper::mapEntityToResponse);
+    }
+
+    @Override
+    public Page<EmployeeResponseDto> getEmployeesByDepartmentCode(String departmentCode, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<EmployeeEntity> employeeEntities = employeeRepository.findAllByDepartmentCode(departmentCode, pageable);
+
+        return employeeEntities.map(employeeMapper::mapEntityToResponse);
+    }
+
+    @Override
+    public EmployeeResponseDto getEmployeeById(String employeeId) {
+        EmployeeEntity employeeEntity = employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found!"));
+
+        return employeeMapper.mapEntityToResponse(employeeEntity);
     }
 
     @Override

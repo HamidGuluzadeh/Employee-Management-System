@@ -8,7 +8,11 @@ import org.springframework.data.domain.Page;
 
 public interface EmployeeService {
 
-    Page<EmployeeResponseDto> getEmployeesByDepartment(String departmentId, int page, int size);
+    Page<EmployeeResponseDto> getEmployeesByDepartmentId(String departmentId, int page, int size);
+
+    Page<EmployeeResponseDto> getEmployeesByDepartmentCode(String departmentCode, int page, int size);
+
+    EmployeeResponseDto getEmployeeById(String employeeId);
 
     EmployeeResponseDto addEmployee(CreateEmployeeRequestDto request);
 

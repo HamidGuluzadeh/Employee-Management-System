@@ -1,6 +1,5 @@
 package com.auspify_tech.employee_management_system.repository;
 
-import com.auspify_tech.employee_management_system.entity.DepartmentEntity;
 import com.auspify_tech.employee_management_system.entity.EmployeeEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,5 +20,7 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, String
     boolean existsByEmailAndIdNot(String email, String employeeId);
 
     boolean existsByPhoneNumberAndIdNot(String phoneNumber, String employeeId);
+
+    Page<EmployeeEntity> findAllByDepartmentCode(String departmentCode, Pageable pageable);
 
 }
